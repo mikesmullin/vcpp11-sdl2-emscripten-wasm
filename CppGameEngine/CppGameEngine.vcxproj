@@ -74,7 +74,7 @@
     <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\x86_64-w64-mingw32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\include;$(IncludePath)</IncludePath>
+    <IncludePath>F:\Desktop\tmp\emsdk-portable-64bit\emscripten\1.37.21\system\include\emscripten;F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\include;$(IncludePath)</IncludePath>
     <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -127,6 +127,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OldMain1.cpp" />
+    <ClCompile Include="SDL1Example1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\hello_world.bmp" />

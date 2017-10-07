@@ -1,57 +1,78 @@
 #include <stdio.h>
 #include <SDL.h>
+#include <SDL_image.h>
 
-int main(int argc, char* args[])
+//#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+//#endif
+
+#include <unistd.h>
+#include <stdlib.h>
+
+/**
+* Loads the image located at 'fileName' and copies it to the
+* renderer 'renderer'
+*/
+int testImage(SDL_Renderer* renderer, const char* fileName)
 {
-	// Screen dimension constants
-	constexpr int SCREEN_WIDTH = 640;
-	constexpr int SCREEN_HEIGHT = 480;
-
-	// Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	SDL_Surface *image = IMG_Load(fileName);
+	if (!image)
 	{
-		fprintf(stderr, "SDL_Init Fail: %s\n", SDL_GetError());
+		printf("IMG_Load: %s\n", IMG_GetError());
+		return 0;
 	}
-	else
-	{
-		// Create window
-		const SDL_Window * const window = SDL_CreateWindow("Demo",
-			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		if (window == NULL)
-		{
-			fprintf(stderr, "Window could not be created! SDL_Error: %s\n", SDL_GetError());
-		}
-		else
-		{
-			// Get window surface
-			const SDL_Surface * const screenSurface = SDL_GetWindowSurface(const_cast<SDL_Window *>(window));
+	int result = image->w;
 
-			// Fill the surface with color
-			SDL_FillRect(const_cast<SDL_Surface *>(screenSurface), NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0x00, 0xFF));
+	/**
+	* position and size that you wish the image to be copied
+	* to on the renderer:
+	*/
+	SDL_Rect dest = { .x = 200,.y = 100,.w = 200,.h = 200 };
 
-			const SDL_Surface * const helloWorld = SDL_LoadBMP("assets/hello_world.bmp");
-			if (helloWorld == NULL) {
-				fprintf(stderr, "Failed to load image.");
-			}
-			else {
-				SDL_BlitSurface(const_cast<SDL_Surface *>(helloWorld), NULL, const_cast<SDL_Surface *>(screenSurface), NULL);
-			}
+	SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, image);
 
-			// Update the surface
-			SDL_UpdateWindowSurface(const_cast<SDL_Window *>(window));
+	SDL_RenderCopy(renderer, tex, NULL, &dest);
 
-			// Wait two seconds
-			SDL_Delay(16000);
+	/**
+	* Now that the image data is in the renderer, we can free the memory
+	* used by the texture and the image surface
+	*/
+	SDL_DestroyTexture(tex);
 
-			// Destroy window
-			SDL_DestroyWindow(const_cast<SDL_Window *>(window));
-		}
+	SDL_FreeSurface(image);
 
-	}
+	return result;
+}
 
-	// Quit SDL subsystems
-	SDL_Quit();
+int main()
+{
+	SDL_Init(SDL_INIT_VIDEO);
+
+	SDL_Window *window;
+	SDL_Renderer *renderer;
+
+	SDL_CreateWindowAndRenderer(600, 400, 0, &window, &renderer);
+
+	int result = 0;
+
+	/**
+	* Set up a white background
+	*/
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_RenderClear(renderer);
+
+	/**
+	* Load and copy the test image to the renderer
+	*/
+	result |= testImage(renderer, "assets/owl.png");
+
+	/**
+	* Show what is in the renderer
+	*/
+	SDL_RenderPresent(renderer);
+
+	printf("you should see an image.\n");
 
 	return 0;
 }
+
