@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
-#undef main
+//#undef main
 
 #include <SDL_image.h>
 
@@ -44,7 +44,8 @@ int testImage(SDL_Renderer* renderer, const char* fileName)
 	return result;
 }
 
-int main()
+//extern "C"
+int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 
