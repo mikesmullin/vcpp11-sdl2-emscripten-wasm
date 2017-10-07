@@ -74,8 +74,8 @@
     <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\x86_64-w64-mingw32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Desktop\tmp\emsdk-portable-64bit\emscripten\1.37.21\system\include\emscripten;F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2_image-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>

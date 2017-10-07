@@ -1,13 +1,13 @@
-#include <stdio.h>
+#include <iostream>
+#include <string>
 #include <SDL.h>
+#undef main
+
 #include <SDL_image.h>
 
-//#ifdef __EMSCRIPTEN__
+#ifdef __EMSCRIPTEN__
 #include <emscripten.h>
-//#endif
-
-#include <unistd.h>
-#include <stdlib.h>
+#endif
 
 /**
 * Loads the image located at 'fileName' and copies it to the
@@ -27,7 +27,7 @@ int testImage(SDL_Renderer* renderer, const char* fileName)
 	* position and size that you wish the image to be copied
 	* to on the renderer:
 	*/
-	SDL_Rect dest = { .x = 200,.y = 100,.w = 200,.h = 200 };
+	SDL_Rect dest = { 200, 100, 200, 200 };
 
 	SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, image);
 
@@ -72,7 +72,9 @@ int main()
 	SDL_RenderPresent(renderer);
 
 	printf("you should see an image.\n");
-
+	std::string line;
+	std::getline(std::cin, line);
+	
 	return 0;
 }
 
