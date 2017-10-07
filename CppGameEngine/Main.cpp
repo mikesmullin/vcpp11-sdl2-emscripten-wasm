@@ -1,5 +1,8 @@
-// build instructions:
-//   emcc Main.cpp -O2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS="[""png""]" --preload-file assets -o hello_owl.html
+// Windows 10 Build Instructions
+// ASM.js:
+//   emcc Main.cpp -O2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS="[""png""]" --preload-file assets -o build/release.html
+// WASM:
+//   emcc Main.cpp -O2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS="[""png""]" --preload-file assets -s WASM=1 -o build/release.html
 
 #include <iostream>
 #include <string>
