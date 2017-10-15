@@ -20,11 +20,22 @@
 // 	}
 
 
+// see also:
+// https://kripken.github.io/emscripten-site/docs/porting/multimedia_and_graphics/EGL-Support-in-Emscripten.html
 
 namespace tests::GLES2Example1 {
+	int quit = 0;
+
+	auto start = std::chrono::high_resolution_clock::now();
+
+	void cleanup();
+	void one_iter();
 
 	void setup()
 	{
+		std::cout << "init" << std::endl;
+
+
 		GLenum error;
 
 		int x = 1024;
@@ -34,6 +45,8 @@ namespace tests::GLES2Example1 {
 			std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 		}
 
+#ifndef __EMSCRIPTEN__
+
 		SDL_Window * window = SDL_CreateWindow("Game!", 100, 100, x, y,
 			SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL /*| SDL_WINDOW_ALLOW_HIGHDPI */);
 
@@ -41,6 +54,7 @@ namespace tests::GLES2Example1 {
 			std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 			return;
 		}
+#endif
 
 		//EGLDisplay* eglDisplay;
 		//EGLContext* eglContext;
@@ -72,16 +86,19 @@ namespace tests::GLES2Example1 {
 		EGLContext context;
 		EGLSurface surface;
 		EGLConfig config;
-		EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
+		EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE }; // EGL_CONTEXT_CLIENT_VERSION == 2 important for emscripten
 
+#ifndef __EMSCRIPTEN__
 		SDL_SysWMinfo info;
 		SDL_VERSION(&info.version); // initialize info structure with SDL version info 
 		SDL_bool get_win_info = SDL_GetWindowWMInfo(window, &info);
 		SDL_assert_release(get_win_info);
 		EGLNativeWindowType hWnd = info.info.win.window;
+#endif
 
 		// Get Display 
-		display = eglGetDisplay(GetDC(hWnd)); // EGL_DEFAULT_DISPLAY 
+		//display = eglGetDisplay(GetDC(hWnd)); // EGL_DEFAULT_DISPLAY 
+		display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 		if (display == EGL_NO_DISPLAY)
 		{
 			return;
@@ -105,8 +122,12 @@ namespace tests::GLES2Example1 {
 			return;
 		}
 
-		// Create a surface 
+		// Create a surface
+#ifdef __EMSCRIPTEN__
+		surface = eglCreateWindowSurface(display, config, NULL, NULL); // emscripten says pass null here
+#else
 		surface = eglCreateWindowSurface(display, config, (EGLNativeWindowType)hWnd, /*surfaceAttribList*/ NULL);
+#endif
 		if (surface == EGL_NO_SURFACE)
 		{
 			return;
@@ -156,6 +177,7 @@ namespace tests::GLES2Example1 {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 
+		std::cout << "loading" << std::endl;
 
 
 
@@ -165,38 +187,18 @@ namespace tests::GLES2Example1 {
 		//glUseProgram(mProgram);
 
 		// Load the vertex data
-		glEnableVertexAttribArray(0);
+//		glEnableVertexAttribArray(0);
 
-		auto start = std::chrono::high_resolution_clock::now();
-		long long deltaTime;
-		const float PERIOD = 5000.0f;
-		const float SCALE = 100.0f;
 
 		SDL_Event event;
-		int quit = 0;
+
+#ifdef __EMSCRIPTEN__
+		// void emscripten_set_main_loop(em_callback_func func, int fps, int simulate_infinite_loop);
+		emscripten_set_main_loop(one_iter, 0, true);
+#else
 		while (!quit)
 		{
-			int deltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count();
-			auto r = (sin(deltaTime * 2 * M_PI / PERIOD) * (SCALE / 2) + (SCALE / 2)) / 100;
-			auto g = (sin(deltaTime * 2 * M_PI / PERIOD + 1000) * (SCALE / 2) + (SCALE / 2)) / 100;
-			auto b = (sin(deltaTime * 2 * M_PI / PERIOD + 2000) * (SCALE / 2) + (SCALE / 2)) / 100;
-			GLfloat vertices[] =
-			{
-				0.0f,  0.5f, 0.0f,
-				r, g, 0.0f,
-				0.5f, -0.5f, 0.0f,
-			};
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertices);
-
-			//printf("r %9.6f\n", r);
-			glClearColor(r,
-				g,
-				b, 1.0f);
-
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			glDrawArrays(GL_TRIANGLES, 0, 3);
-
+			one_iter();
 			eglSwapBuffers(display, surface);
 
 			while (SDL_PollEvent(&event))
@@ -206,9 +208,46 @@ namespace tests::GLES2Example1 {
 					quit = 1;
 				}
 			}
-		}
 
+			SDL_Delay(1000 / 60); // TODO: instead of fixed-rate, make more intelligent variable rate
+		}
+#endif
+	}
+
+
+	void cleanup() {
 		SDL_Quit();
+		std::cout << "done" << std::endl;
+	}
+
+	// The "main loop" function.
+	void one_iter() {
+		const float PERIOD = 5000.0f;
+		const float SCALE = 100.0f;
+
+		long long deltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count();
+		float r = (sin(deltaTime * 2 * M_PI / PERIOD) * (SCALE / 2) + (SCALE / 2)) / 100;
+		float g = (sin(deltaTime * 2 * M_PI / PERIOD + 1000) * (SCALE / 2) + (SCALE / 2)) / 100;
+		float b = (sin(deltaTime * 2 * M_PI / PERIOD + 2000) * (SCALE / 2) + (SCALE / 2)) / 100;
+
+		//			GLfloat vertices[] =
+		//			{
+		//				0.0f,  0.5f, 0.0f,
+		//				r, g, 0.0f,
+		//				0.5f, -0.5f, 0.0f,
+		//			};
+		//			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertices);
+
+		//printf("r %9.6f\n", r);
+
+		glClearColor(r,
+			g,
+			b, 1.0f);
+
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+
 	}
 
 }

@@ -1,5 +1,4 @@
 ﻿  GLES2Example1.cpp
-f:\creative\workspace\tmp\cppgameengine\src\test\gles2example1.cpp(182): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
   CppGameEngine.vcxproj -> F:\Creative\Workspace\tmp\CppGameEngine\.\build\win\bin\release.exe
   CppGameEngine.vcxproj -> .\build\win\bin\release.pdb (Partial PDB)
   0 File(s) copied

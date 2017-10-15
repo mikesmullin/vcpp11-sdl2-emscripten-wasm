@@ -68,30 +68,30 @@
     <OutDir>.\build\win\bin\</OutDir>
     <IntDir>.\build\win\obj\</IntDir>
     <TargetName>release</TargetName>
-    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\OpenKODE-1.0.3\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\emscripten-1.37.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\build\win\bin\</OutDir>
     <IntDir>.\build\win\obj\</IntDir>
     <TargetName>release</TargetName>
-    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\OpenKODE-1.0.3\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\emscripten-1.37.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x86;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\build\win\bin\</OutDir>
     <IntDir>.\build\win\obj\</IntDir>
     <TargetName>release</TargetName>
-    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\OpenKODE-1.0.3\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\emscripten-1.37.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>.\build\win\bin\</OutDir>
     <IntDir>.\build\win\obj\</IntDir>
     <TargetName>release</TargetName>
-    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Creative\Workspace\tmp\CppGameEngine\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\OpenKODE-1.0.3\include;F:\Creative\Workspace\tmp\CppGameEngine\vendor\emscripten-1.37.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2-2.0.6\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\SDL2_image-2.0.1\lib\x64;F:\Creative\Workspace\tmp\CppGameEngine\vendor\ANGLE-bf90b60\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,7 +112,7 @@
       <Command>xcopy /yesid "$(SolutionDir)assets\*" "$(TargetDir)assets\"
 xcopy /yd "$(SolutionDir)vendor\SDL2-2.0.6\lib\x86\*.dll" "$(TargetDir)"
 xcopy /yd "$(SolutionDir)vendor\SDL2_image-2.0.1\lib\x86\*.dll" "$(TargetDir)"
-xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x86\*.dll" "$(TargetDir)"</Command>
+xcopy /yd "$(SolutionDir)vendor\ANGLE-bf90b60\lib\x86\*.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,7 +135,7 @@ xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x86\*.dll" "$(TargetDir)"</Command>
       <Command>xcopy /yesid "$(SolutionDir)assets\*" "$(TargetDir)assets\"
 xcopy /yd "$(SolutionDir)vendor\SDL2-2.0.6\lib\x86\*.dll" "$(TargetDir)"
 xcopy /yd "$(SolutionDir)vendor\SDL2_image-2.0.1\lib\x86\*.dll" "$(TargetDir)"
-xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x86\*.dll" "$(TargetDir)"</Command>
+xcopy /yd "$(SolutionDir)vendor\ANGLE-bf90b60\lib\x86\*.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,7 +147,7 @@ xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x86\*.dll" "$(TargetDir)"</Command>
       <Command>xcopy /yesid "$(SolutionDir)assets\*" "$(TargetDir)assets\"
 xcopy /yd "$(SolutionDir)vendor\SDL2-2.0.6\lib\x64\*.dll" "$(TargetDir)"
 xcopy /yd "$(SolutionDir)vendor\SDL2_image-2.0.1\lib\x64\*.dll" "$(TargetDir)"
-xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x64\*.dll" "$(TargetDir)"</Command>
+xcopy /yd "$(SolutionDir)vendor\ANGLE-bf90b60\lib\x64\*.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -162,7 +162,7 @@ xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x64\*.dll" "$(TargetDir)"</Command>
       <Command>xcopy /yesid "$(SolutionDir)assets\*" "$(TargetDir)assets\"
 xcopy /yd "$(SolutionDir)vendor\SDL2-2.0.6\lib\x64\*.dll" "$(TargetDir)"
 xcopy /yd "$(SolutionDir)vendor\SDL2_image-2.0.1\lib\x64\*.dll" "$(TargetDir)"
-xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x64\*.dll" "$(TargetDir)"</Command>
+xcopy /yd "$(SolutionDir)vendor\ANGLE-bf90b60\lib\x64\*.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -171,10 +171,6 @@ xcopy /yd "$(SolutionDir)vendor\ANGLE\lib\x64\*.dll" "$(TargetDir)"</Command>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\test\GLES2Example1.cpp" />
-    <ClCompile Include="src\test\OldMain1.cpp" />
-    <ClCompile Include="src\test\SDL1Example1.cpp" />
-    <ClCompile Include="src\test\SDL2Example2.cpp" />
-    <ClCompile Include="src\test\SDL2ImageExample2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\global.h" />
