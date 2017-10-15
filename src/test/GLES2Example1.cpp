@@ -8,12 +8,18 @@
 #include <iostream>
 #include <chrono>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 // #define GL_GLEXT_PROTOTYPES 1
 // #define CHECK_GL_ERROR \
 // 	while ((error = glGetError()) != 0) { \
 // 		printf("GL Error %x: %s:%d\n", error, __FILE__, __LINE__); \
 // 		assert(false); \
 // 	}
+
+
 
 namespace tests::GLES2Example1 {
 
@@ -50,12 +56,14 @@ namespace tests::GLES2Example1 {
 			EGL_SAMPLE_BUFFERS, 0,
 			EGL_NONE
 		};
-		EGLint surfaceAttribList[] =
-		{
-			//EGL_POST_SUB_BUFFER_SUPPORTED_NV, flags & (ES_WINDOW_POST_SUB_BUFFER_SUPPORTED) ? EGL_TRUE : EGL_FALSE, 
-			EGL_POST_SUB_BUFFER_SUPPORTED_NV, EGL_FALSE,
-			EGL_NONE, EGL_NONE
-		};
+		//EGLint surfaceAttribList[] =
+		//{
+		//	//EGL_POST_SUB_BUFFER_SUPPORTED_NV, 
+		//	//flags & (ES_WINDOW_POST_SUB_BUFFER_SUPPORTED) ? EGL_TRUE : EGL_FALSE,		
+		//	EGL_POST_SUB_BUFFER_SUPPORTED_NV,
+		//	EGL_FALSE,
+		//	EGL_NONE, EGL_NONE
+		//};
 
 		EGLint numConfigs;
 		EGLint majorVersion;
@@ -98,7 +106,7 @@ namespace tests::GLES2Example1 {
 		}
 
 		// Create a surface 
-		surface = eglCreateWindowSurface(display, config, (EGLNativeWindowType)hWnd, surfaceAttribList);
+		surface = eglCreateWindowSurface(display, config, (EGLNativeWindowType)hWnd, /*surfaceAttribList*/ NULL);
 		if (surface == EGL_NO_SURFACE)
 		{
 			return;
