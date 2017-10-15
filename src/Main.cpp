@@ -15,10 +15,15 @@
 #include <emscripten.h>
 #endif
 
+
+
+
+
+
 /**
-* Loads the image located at 'fileName' and copies it to the
-* renderer 'renderer'
-*/
+ * Loads the image located at 'fileName' and copies it to the
+ * renderer 'renderer'
+ */
 int testImage(SDL_Renderer* renderer, const char* fileName)
 {
 	SDL_Surface *image = IMG_Load(fileName);
@@ -40,9 +45,9 @@ int testImage(SDL_Renderer* renderer, const char* fileName)
 	SDL_RenderCopy(renderer, tex, NULL, &dest);
 
 	/**
-	* Now that the image data is in the renderer, we can free the memory
-	* used by the texture and the image surface
-	*/
+	 * Now that the image data is in the renderer, we can free the memory
+	 * used by the texture and the image surface
+	 */
 	SDL_DestroyTexture(tex);
 
 	SDL_FreeSurface(image);
@@ -63,25 +68,25 @@ int main(int argc, char** argv)
 	int result = 0;
 
 	/**
-	* Set up a white background
-	*/
+	 * Set up a white background
+	 */
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
 
 	/**
-	* Load and copy the test image to the renderer
-	*/
+	 * Load and copy the test image to the renderer
+	 */
 	result |= testImage(renderer, "assets/owl.png");
 
 	/**
-	* Show what is in the renderer
-	*/
+	 * Show what is in the renderer
+	 */
 	SDL_RenderPresent(renderer);
 
 	printf("you should see an image.\n");
 	std::string line;
 	std::getline(std::cin, line);
-	
+
 	return 0;
 }
 
