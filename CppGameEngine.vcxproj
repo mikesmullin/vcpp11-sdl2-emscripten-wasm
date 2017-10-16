@@ -169,8 +169,8 @@ xcopy /yd "$(SolutionDir)vendor\ANGLE-bf90b60\lib\x64\*.dll" "$(TargetDir)"</Com
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\engine\GLES2Example1.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\test\GLES2Example1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\global.h" />
